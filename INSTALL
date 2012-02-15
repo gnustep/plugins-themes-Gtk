@@ -1,0 +1,18 @@
+Installation
+------------
+
+Just compile the Gnome bundle : 
+
+	make
+
+and as superuser:
+
+        make install
+
+Now, just try to activate the theme (for example with SystemPrefrences.app)
+and run a GNUstep program ... :-)
+
+or type on the command line:
+
+defaults write NSGlobalDomain GSTheme GnomeTheme
+

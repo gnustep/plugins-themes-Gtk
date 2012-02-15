@@ -1,0 +1,18 @@
+{
+  NSExecutable = "GtkTheme";
+  NSPrincipalClass = "GGnomeTheme";
+  GSThemeAuthors = (
+	"Hans Baier",
+	"Gregory John Casamento",
+  );
+  GSThemeDetails = "Gtk theme";
+  GSThemeIcon = gnome_icon_48.png;     
+  GSThemePreview = gtk+.png;
+  GSThemeDomain = {
+  	NSScrollViewInterfaceStyle = NSWindows95InterfaceStyle;
+  	NSScrollerInterfaceStyle = NSWindows95InterfaceStyle;
+	NSMenuInterfaceStyle = NSWindows95InterfaceStyle;
+	GSSuppressAppIcon = YES;
+	GSScrollerButtonsOffset = 0.0;
+  };
+}

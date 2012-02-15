@@ -1,0 +1,110 @@
+2011-06-09 14:04-EDT Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GGnomeThemeInitialization.h: Added declarations for functions
+	to get the font	based on the default from GNOME.
+	* GGnomeThemeInitialization.m: Call functions to get the font
+	from the GNOME config.  If it is not one which is available to
+	GNUstep pick "Liberation Sans" or "Liberation Mono" if those
+	are unavailable do not change.
+
+2011-06-09 11:08-EDT Gregory John Casamento <greg.casamento@gmail.com>
+
+	* NSTabView+Gnome.m: Move the tabs over a little when drawing them
+	so that the align better with the notebook widget underneath.
+
+2011-06-08 15:25-EDT Gregory John Casamento <greg.casamento@gmail.com>
+
+	* NSTabView+Gnome.m: Correct notebook widget drawing.
+
+2011-06-03 01:11-EDT Gregory John Casamento <greg.casamento@gmail.com>
+
+	* NSBrowser+Gnome.m: Draw border.
+	* NSScrollView+Gnome.m: Remove logging.
+	* NSTabView+Gnome.m: Cleanup
+
+2011-06-02 18:08-EDT Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GGnomeTheme.[hm]: Remove method to draw grayBezel
+	* NSScrollView+Gnome.m: Add debugging information here for now.
+	* NSTabView+Gnome.m: Various fixesa and corrections.  Correction for
+	tab view issue.  For now use the button method to draw the border.
+
+2011-04-10 16:45-EST Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GGnomeTheme.m: Correct drawing issue with horizontal portion of
+	menu.
+	
+2011-03-20 German Arias <german@xelalug.org>
+
+	* NSTabView+Gnome.m: No draw tabs if the style doesn't
+	have these.
+
+2011-03-16 11:05-EDT Ivan Vucica <ivucica@gmail.com>
+
+	* GGnomeThemeInitialization.m: Better choice of some FS icons.
+	* GNUmakefile: Initialize GNUSTEP_MAKEFILES if not initialized.
+	Patch applied by: greg.casamento@gmail.com
+
+2011-01-16 05:01-EST Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GGnomeTheme.m
+	* NSMenuView+Gnome.m: Change drawing to avoid issue with 
+	lines being drawn after selection.  The solution is something
+	of a hack.  This indicates that there might need to be methods
+	altering the frame in the theme later on.
+
+2011-01-16 03:20-EST Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GnomeThemeInfo.plist: Added setting to use in-window menus.
+
+2010-12-22 17:41-EST Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GnomeThemeInfo.plist: Supress the app icon in this mode.
+
+2010-11-27 Gregory Casamento <greg.casamento@gmail.com>
+
+	* Changed all previously modified files to be
+	a category on GGnomeTheme instead of GSTheme to 
+	make certain they are loadable from the theme
+	manager.
+	
+2010-11-27 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSTableHeaderView+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSTableHeaderCell+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSSliderCell+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSScrollView+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSMenuView+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSBrowser+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSScroller+Gnome.m: Use new theme methods.
+
+2010-11-26 Gregory Casamento <greg.casamento@gmail.com>
+
+	* NSTabView+Gnome.m: Use new theme methods.
+
+2010-01-09 Hans Baier <hansfbaier@googlemail.com>
+
+	* Initial import; thus dicontinuing my git repository on
+	http://github.com/hansfbaier/gnustep-gnome
+	note that as of now the theme crashes when activated with
+	SystemPreferences.app, but it works when activated with defaults
+	Note also, this isn't perfect yet and still has a lot of rough
+	edges (eg. the Makefile), contributions welcome ;)

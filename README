@@ -1,0 +1,20 @@
+========
+Gnome Theme
+========
+
+Gnome is a theme engine for GNUstep which 
+uses the current Gtk+-Theme selected in Gnome
+for drawing its widgets.
+
+The theme can be activated via the Info panel 
+theme manager or in SystemPreferences.
+
+The theme can also be activated manually, like so:
+defaults write NSGlobalDomain GSTheme GnomeTheme
+
+Installation
+------------
+
+as usual, but if you like, then
+see the INSTALL file.
+
