@@ -33,6 +33,8 @@
   GtkWidget *widget = [GGPainter getWidget: isHorizontal ? 
 				 @"GtkHScrollbar" : @"GtkVScrollbar"];
 
+  if (widget)
+    {
   NSImage *img;
     img = [painter paintBox: widget
                    withPart: "trough"
@@ -43,6 +45,7 @@
                       style: widget->style];
 
    [painter drawAndReleaseImage: img inFrame: bounds flipped: YES];
+    }
   ///////////////// END ADDITION
 
   if (NSIntersectsRect (rect, rectForPartKnobSlot) == YES)

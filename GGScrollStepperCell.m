@@ -29,6 +29,13 @@
   NSImage *img;
   // GtkRange *range = GTK_RANGE(widget);
 
+  if (widget == nil)
+    {
+      [super _drawBorderAndBackgroundWithFrame: cellFrame
+					inView: controlView];
+      return;
+    }
+
   img = [painter paintBox: widget
 		 withPart: horizontal ? "hscrollbar" : "vscrollbar"
 		 andSize: cellFrame

@@ -679,6 +679,9 @@ PAINT_FUNCTION_BODY(
 
   GtkWidget *widget = [GGPainter getWidget: horizontal ? @"GtkHScrollbar" : @"GtkVScrollbar"];
 
+  if (widget == NULL)
+    return nil;
+ 
   NSImage *arrow = [painter paintArrow: widget
                               withPart: horizontal ? "hscrollbar" : "vscrollbar"
                                andSize: NSMakeRect(0, 0, size.height, size.width)
@@ -696,6 +699,9 @@ PAINT_FUNCTION_BODY(
   GGPainter *painter = [GGPainter instance];
 
   GtkWidget *widget = [GGPainter getWidget: @"GtkMenu.GtkMenuItem"];
+
+  if (widget == NULL)
+    return nil;
 
   NSImage *arrow = [painter paintArrow: widget
                               withPart: "menuitem"
@@ -715,6 +721,9 @@ PAINT_FUNCTION_BODY(
 
   GtkWidget *widget = [GGPainter getWidget: @"GtkComboBox.GtkToggleButton.GtkHBox.GtkArrow"];
 
+  if (widget == NULL)
+    return nil;
+
   NSImage *arrow = [painter paintArrow: widget
                               withPart: "arrow"
                                andSize: NSMakeRect(0, 0, size.height, size.width)
@@ -732,6 +741,9 @@ PAINT_FUNCTION_BODY(
   GGPainter *painter = [GGPainter instance];
 
   GtkWidget *widget = [GGPainter getWidget: @"GtkTreeView"];
+
+  if (widget == NULL)
+    return nil;
 
   return [painter paintExpander: widget
                        withPart: "treeview"

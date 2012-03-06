@@ -1,5 +1,14 @@
 2012-03-06  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* GGScrollKnobCell.m:
+	* NSScroller+Gnome.m:
+	* GGnomeThemeInitialization.m:
+	* GGScrollStepperCell.m:
+	* GGPainter.m: Quick fixes for segfaults from dereferencing
+	NULL widgets.
+
+2012-03-06  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* GNUmakefile: Use pkg-config. Put linker commands in
 	Gtk_BUNDLE_LIBS. Remove reference to etoile.make.
 

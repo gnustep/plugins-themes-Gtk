@@ -240,9 +240,12 @@ NSSize scale_size(NSSize orig, gfloat factor)
 
 void replace_icon(NSString *icon_name, NSImage *new_image)
 {
-  NSImage *img = [NSImage imageNamed: icon_name];
-  [img setName: [@"kick_" stringByAppendingString: icon_name]];
-  [new_image setName: icon_name];
+  if (new_image)
+    {
+      NSImage *img = [NSImage imageNamed: icon_name];
+      [img setName: [@"kick_" stringByAppendingString: icon_name]];
+      [new_image setName: icon_name];
+    }
 } 
 
 void setup_icons()
@@ -380,7 +383,9 @@ NSColorList *setup_palette()
   [systemcolors setColor: [GGPainter fromGdkColor: windowstyle->bg[GTK_STATE_NORMAL]] forKey: @"windowBackgroundColor"];
   [systemcolors setColor: [GGPainter fromGdkColor: windowstyle->fg[GTK_STATE_NORMAL]] forKey: @"windowFrameColor"];
   [systemcolors setColor: [GGPainter fromGdkColor: windowstyle->fg[GTK_STATE_INSENSITIVE]] forKey: @"windowFrameTextColor"];
-  [systemcolors setColor: [GGPainter fromGdkColor: [GGPainter getWidget: @"GtkHScrollbar"]->style->bg[GTK_STATE_NORMAL]] forKey: @"scrollBarColor"];
+
+  if ([GGPainter getWidget: @"GtkHScrollbar"])
+    [systemcolors setColor: [GGPainter fromGdkColor: [GGPainter getWidget: @"GtkHScrollbar"]->style->bg[GTK_STATE_NORMAL]] forKey: @"scrollBarColor"];
 
   // Fill in the rest of them...
   [systemcolors setColor: [NSColor whiteColor]
