@@ -1,5 +1,14 @@
 2012-03-06  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* GGnomeThemeInitialization.m:
+	- Remove an image from the NSImage name dictionary by calling
+	[img setName: nil] rather than [img setName: @"kick_..."];.
+	- Remove radio/checkbox/slider images before installing new
+	ones (since -setName: does nothing if an image name
+	is already in use, so it's important to remove the old image)
+
+2012-03-06  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* GGScrollKnobCell.m:
 	* NSScroller+Gnome.m:
 	* GGnomeThemeInitialization.m:

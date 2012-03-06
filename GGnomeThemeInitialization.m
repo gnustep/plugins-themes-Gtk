@@ -243,7 +243,7 @@ void replace_icon(NSString *icon_name, NSImage *new_image)
   if (new_image)
     {
       NSImage *img = [NSImage imageNamed: icon_name];
-      [img setName: [@"kick_" stringByAppendingString: icon_name]];
+      [img setName: nil];
       [new_image setName: icon_name];
     }
 } 
@@ -262,27 +262,35 @@ void setup_icons()
   [[painter namedIcon: "folder_home" withSize: 48] setName: @"common_HomeDirectory"];
 
   // radio button theme images
-  NSImage *img = [NSImage imageNamed: @"NSHighlightedRadioButton"];
-  [[painter drawRadioButton: [img size] state: GTK_STATE_NORMAL shadow: GTK_SHADOW_IN] setName: @"common_RadioOn"];
-  [[painter drawRadioButton: [img size] state: GTK_STATE_NORMAL shadow: GTK_SHADOW_OUT] setName: @"common_RadioOff"];
+  NSSize imgSize = [[NSImage imageNamed: @"NSHighlightedRadioButton"] size];
+
+  [[NSImage imageNamed: @"common_RadioOn"] setName: nil];
+  [[painter drawRadioButton: imgSize state: GTK_STATE_NORMAL shadow: GTK_SHADOW_IN] setName: @"common_RadioOn"];
+
+  [[NSImage imageNamed: @"common_RadioOff"] setName: nil];
+  [[painter drawRadioButton: imgSize state: GTK_STATE_NORMAL shadow: GTK_SHADOW_OUT] setName: @"common_RadioOff"];
   [[painter namedIcon: "unknown" withSize: 48] setName: @"common_Unknown"];
   [[painter namedIcon: "exec" withSize: 48] setName: @"common_UnknownTool"];
   [[painter namedIcon: "computer" withSize: 48] setName: @"common_Root_PC"];
 
   // check button theme images
-  img = [NSImage imageNamed: @"NSSwitch"];
-  [[painter drawCheckButton: [img size] state: GTK_STATE_NORMAL shadow: GTK_SHADOW_IN] setName: @"common_SwitchOn"];
-  [[painter drawCheckButton: [img size] state: GTK_STATE_NORMAL shadow: GTK_SHADOW_OUT] setName: @"common_SwitchOff"];
+  imgSize = [[NSImage imageNamed: @"NSSwitch"] size];
+
+  [[NSImage imageNamed: @"common_SwitchOn"] setName: nil];
+  [[painter drawCheckButton: imgSize state: GTK_STATE_NORMAL shadow: GTK_SHADOW_IN] setName: @"common_SwitchOn"];
+  [[NSImage imageNamed: @"common_SwitchOff"] setName: nil];
+  [[painter drawCheckButton: imgSize state: GTK_STATE_NORMAL shadow: GTK_SHADOW_OUT] setName: @"common_SwitchOff"];
 
   NSString *icon_name = nil;
+  NSImage *img;
   
   img = [NSImage imageNamed: @"common_SliderVert"];
-  [img setName: @"kick_SliderVert"];
+  [img setName: nil];
   img = [painter drawHorizontalSlider: [img size] state: GTK_STATE_NORMAL shadow: GTK_SHADOW_OUT];
   [img setName: @"common_SliderHoriz"];
 
   img = [NSImage imageNamed: @"common_SliderHoriz"];
-  [img setName: @"kick_SliderVert"];
+  [img setName: nil];
   img = [painter drawVerticalSlider: [img size] state: GTK_STATE_NORMAL shadow: GTK_SHADOW_OUT];
   [img setName: @"common_SliderVert"];
 
