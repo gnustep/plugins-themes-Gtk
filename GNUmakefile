@@ -8,12 +8,12 @@ endif
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-MYCFLAGS = -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -D_REENTRANT -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/gconf/2/
+MYCFLAGS = $(shell pkg-config --cflags glib-2.0 gtk+-2.0 gconf-2.0)
 
 ADDITIONAL_OBJCFLAGS = -Wno-import -g $(MYCFLAGS) -O0 # -Wall -O2
 ADDITIONAL_CFLAGS = $(MYCFLAGS)
 
-ADDITIONAL_LDFLAGS = -v -L/usr/lib/debug/usr/lib/ -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lgio-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lglib-2.0 -lgdk-x11-2.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lgio-2.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -lglib-2.0 -lgconf-2
+Gtk_BUNDLE_LIBS = $(shell pkg-config --libs glib-2.0 gtk+-2.0 gconf-2.0)
 
 #
 # Main
@@ -53,6 +53,5 @@ Gtk_OBJC_FILES = \
 -include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/bundle.make
--include ../../etoile.make
 
 -include GNUmakefile.postamble
