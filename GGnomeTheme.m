@@ -461,7 +461,7 @@ void gconf_key_changed_callback(GConfClient *client,
 			      NULL);
       
       _added_callback = YES;
-      updateTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)1.0
+      updateTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)0.25
 						     target:self
 						   selector:@selector(timerCallback:)
 						   userInfo:NULL
