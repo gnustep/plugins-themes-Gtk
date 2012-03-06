@@ -1,5 +1,5 @@
 {
-  NSExecutable = "GtkTheme";
+  NSExecutable = "Gtk";
   NSPrincipalClass = "GGnomeTheme";
   GSThemeAuthors = (
 	"Hans Baier",

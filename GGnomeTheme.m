@@ -3,10 +3,22 @@
 #include "GGScrollKnobCell.h"
 #include "GGScrollStepperCell.h"
 #include "GGnomeThemeInitialization.h"
+#include <gconf/gconf-client.h>
 
 #include <cairo/cairo.h>
 
+static BOOL _added_callback = NO;
 static NSImage *_pbc_image[5];
+
+void gconf_key_changed_callback(GConfClient *client,
+				guint cnxn_id,
+				GConfEntry *entry,
+				gpointer user_data)
+{
+  // NSLog(@"Changed...");
+  [[GSTheme theme] deactivate];
+  [[GSTheme theme] activate];
+}
 
 @interface GGnomeTheme (Private)
 - (void) drawStepperButton: (NSRect) aRect withArrowType: (GtkArrowType) arrow_type pressed: (BOOL) pressed;
@@ -415,6 +427,11 @@ static NSImage *_pbc_image[5];
   return [GGPainter fromGdkColor: style->bg[GTK_STATE_NORMAL]];
 }
 
+- (void) timerCallback: (NSTimer *)timer
+{
+  // NSLog(@"Call gtk mainloop");
+  gtk_main_iteration_do(FALSE);
+}
 
 - (void) activate
 {
@@ -422,6 +439,34 @@ static NSImage *_pbc_image[5];
   init_gtk_widgets();
   setup_icons();
   setup_fonts();
+  setup_palette();
+
+  if(_added_callback == NO)
+    {
+      /* Get the GconfClient, tell it we want to monitor /apps/metacity/general */
+      GConfClient* client = gconf_client_get_default();
+
+      gconf_client_add_dir(client,
+			   "/desktop/gnome/interface",
+			   GCONF_CLIENT_PRELOAD_NONE,
+			   NULL);
+      /* Connect the check_button to a callback that can toggle it when the option
+       * is changed by some outside program.
+       */
+      gconf_client_notify_add(client,
+			      "/desktop/gnome/interface/gtk_theme",
+			      gconf_key_changed_callback,
+			      NULL,
+			      NULL,
+			      NULL);
+      
+      _added_callback = YES;
+      updateTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)1.0
+						     target:self
+						   selector:@selector(timerCallback:)
+						   userInfo:NULL
+						    repeats:YES];
+    }
 
   NSLog (@"Gnome theme initialized");
   [super activate];

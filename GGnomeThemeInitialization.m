@@ -70,33 +70,35 @@ void init_gtk_window()
 {
   static NSString *themeName = nil;
   
-  if ( [GGPainter getWidget: @"GtkWindow"] == (GtkWidget *)nil && [themeName length] == 0) {
-    NSLog (@"initializing GtkWindow");
-    themeName = getThemeName();
-
-    x11ErrorHandler gs_x_errhandler = XSetErrorHandler(0);
-    gtk_init (NULL, NULL);
-    GdkScreen *screen;
-    GdkColormap *cmap;
-    screen = gdk_screen_get_default();
-    cmap = gdk_screen_get_rgba_colormap (screen);
-
-    // Enable this to get cairo performance improvements
-    // currently disabled due to painting glitches
-    if (cmap) {
-      hasRgbaColormap = YES;
-      gdk_screen_set_default_colormap (screen, cmap);
+  if ( [GGPainter getWidget: @"GtkWindow"] == (GtkWidget *)nil && [themeName length] == 0)
+    {
+      NSLog (@"initializing GtkWindow");
+      themeName = getThemeName();
+      
+      x11ErrorHandler gs_x_errhandler = XSetErrorHandler(0);
+      gtk_init (NULL, NULL);
+      gconf_init(NULL, NULL, NULL);
+      GdkScreen *screen;
+      GdkColormap *cmap;
+      screen = gdk_screen_get_default();
+      cmap = gdk_screen_get_rgba_colormap (screen);
+      
+      // Enable this to get cairo performance improvements
+      // currently disabled due to painting glitches
+      if (cmap) {
+	hasRgbaColormap = YES;
+	gdk_screen_set_default_colormap (screen, cmap);
+      }
+      XSetErrorHandler(gs_x_errhandler);
+      
+      GtkWidget* gtkWindow = gtk_window_new(GTK_WINDOW_POPUP);
+      gtk_widget_realize(gtkWindow);
+      if (displayDepth == -1)
+	displayDepth = gdk_drawable_get_depth(gtkWindow->window);
+      
+      [GGPainter setWidget: gtkWindow forKey: @"GtkWindow"];
+      NSLog (@"initializing GtkWindow finished ==========");
     }
-    XSetErrorHandler(gs_x_errhandler);
-
-    GtkWidget* gtkWindow = gtk_window_new(GTK_WINDOW_POPUP);
-    gtk_widget_realize(gtkWindow);
-    if (displayDepth == -1)
-      displayDepth = gdk_drawable_get_depth(gtkWindow->window);
-
-    [GGPainter setWidget: gtkWindow forKey: @"GtkWindow"];
-    NSLog (@"initializing GtkWindow finished ==========");
-  }
 }
 
 void setup_gtk_widget(GtkWidget* widget)
@@ -188,7 +190,7 @@ void gtkStyleSetCallback(GtkWidget* widget, GtkStyle* style, void* foo)
   init_gtk_widgets();
   
   if ( ![oldTheme isEqualToString: getThemeName()] ) {
-    oldTheme = getThemeName();
+    ASSIGN(oldTheme, getThemeName());
     //TODO care about widget palette stuff here
   }
 }

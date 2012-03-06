@@ -43,6 +43,7 @@ Gtk_OBJC_FILES = \
 		NSScroller+Gnome.m \
 		NSTabView+Gnome.m \
 		NSBrowser+Gnome.m \
+		NSWindow+Gnome.m \
 		GGScrollKnobCell.m \
 		GGScrollStepperCell.m \
 		GGPainter.m \

@@ -1,3 +1,13 @@
+2012-03-06 00:14-EST Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GGnomeTheme.h: keep timer
+	* GGnomeThemeInitialization.m: Initialize gconf so that
+	theme recieves notifications when theme is changed.
+	* GGnomeTheme.m: Changes to support theme update when
+	theme changes.
+	* GNUmakefile: Update makefile to include new source file.
+	* GtkInfo.plist: Fix icon issue.
+
 2011-06-09 14:04-EDT Gregory John Casamento <greg.casamento@gmail.com>
 
 	* GGnomeThemeInitialization.h: Added declarations for functions

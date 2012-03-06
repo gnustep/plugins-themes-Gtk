@@ -6,6 +6,10 @@
 #include <Foundation/Foundation.h>
 
 @interface GGnomeTheme : GSTheme
+{
+  NSTimer *updateTimer;
+}
+
 - (void) activate;
 
 //- (NSRect) drawButton: (NSRect)border withClip: (NSRect)clip;
