@@ -1,3 +1,8 @@
+2012-03-06 00:16-EST Gregory John Casamento <greg.casamento@gmail.com>
+
+	* NSWindow+Gnome.m: Stub to be called when reparenting
+	an Xwindow into a GtkWindow for native menus.
+
 2012-03-06 00:14-EST Gregory John Casamento <greg.casamento@gmail.com>
 
 	* GGnomeTheme.h: keep timer
