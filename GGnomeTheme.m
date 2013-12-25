@@ -481,6 +481,11 @@ void gconf_key_changed_callback(GConfClient *client,
 {
   return NO;
 }
+
+- (BOOL) doesProcessEventsForPopUpMenu
+{
+  return YES;
+}
 @end
 
 @implementation GGnomeTheme (Private)
