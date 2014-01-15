@@ -32,15 +32,18 @@ static int displayDepth  =  -1;
 
 NSString *getGConfString(NSString *value)
 {
-  NSString *retVal;
+  NSString *retVal = nil;
 
   g_type_init();
   GConfClient* client = gconf_client_get_default();
   GError *err = 0;
   char *str = gconf_client_get_string(client, [value UTF8String], &err);
   if (!err) {
-    retVal = [NSString stringWithUTF8String: str];
-    g_free(str);
+    if (NULL != str)
+      {
+        retVal = [NSString stringWithUTF8String: str];
+        g_free(str);
+      }
   }
   g_object_unref(client);
   if (err)

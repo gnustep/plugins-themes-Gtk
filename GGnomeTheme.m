@@ -24,7 +24,44 @@ void gconf_key_changed_callback(GConfClient *client,
 - (void) drawStepperButton: (NSRect) aRect withArrowType: (GtkArrowType) arrow_type pressed: (BOOL) pressed;
 @end
 
+/*
+ * The class used by the DBus menu registry
+ */
+static Class _menuRegistryClass;
+
 @implementation GGnomeTheme
+- (Class)_findDBusMenuRegistryClass
+{
+  NSString	*path;
+  NSBundle	*bundle;
+  NSArray	*paths;
+  NSUInteger	count;
+
+  if (Nil != _menuRegistryClass)
+    {
+      return _menuRegistryClass;
+    }
+  paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
+    NSAllDomainsMask, YES);
+  count = [paths count];
+  while (count-- > 0)
+    {
+       path = [paths objectAtIndex: count];
+       path = [path stringByAppendingPathComponent: @"Bundles"];
+       path = [path stringByAppendingPathComponent: @"DBusMenu"];
+       path = [path stringByAppendingPathExtension: @"bundle"];
+       bundle = [NSBundle bundleWithPath: path];
+       if (bundle != nil)
+         {
+           if ((_menuRegistryClass = [bundle principalClass]) != Nil)
+             {
+               break;  
+             }
+         }
+     }
+  return _menuRegistryClass;
+}
+
 - (id) initWithBundle: (NSBundle *)bundle
 {
   if((self = [super initWithBundle: bundle]) != nil)
@@ -32,6 +69,7 @@ void gconf_key_changed_callback(GConfClient *client,
       ASSIGN(_pbc_image[0], [NSImage imageNamed: @"common_Nibble"]);
       ASSIGN(_pbc_image[1], [NSImage imageNamed: @"common_3DArrowDown"]);
     }
+  menuRegistry = [[self _findDBusMenuRegistryClass] new];
   return self;
 }
 
@@ -600,6 +638,18 @@ void gconf_key_changed_callback(GConfClient *client,
     }
 
   return aRect;
+}
+
+- (void)setMenu: (NSMenu*)m forWindow: (NSWindow*)w
+{
+  if (nil != menuRegistry)
+    {
+      [menuRegistry setMenu: m forWindow: w];
+    }
+  else
+    {
+      [super setMenu: m forWindow: w];
+    }
 }
 
 @end

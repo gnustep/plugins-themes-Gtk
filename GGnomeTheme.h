@@ -8,6 +8,7 @@
 @interface GGnomeTheme : GSTheme
 {
   NSTimer *updateTimer;
+  id menuRegistry;
 }
 
 - (void) activate;

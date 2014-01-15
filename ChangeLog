@@ -1,3 +1,10 @@
+2014-01-15  Niels Grewe <niels.grewe@halbordnung.de>
+
+	* GGnomeTheme.m: Load the DBusMenu bundle and use the remote menu
+	 if available.
+	* GGnomeThemeInitialization.m: Fix getGConfString() to not raise
+	an exception if the key is empty.
+
 2013-12-25  German Arias <germanandre@gmx.es>
 
 	* GGnomeTheme.m: Add -doesProcessEventsForPopUpMenu to return YES, since
