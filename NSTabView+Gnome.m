@@ -119,14 +119,14 @@
   NSPoint iP;
   GtkPositionType position;
   float labelYCorrection;
-  if (type == NSBottomTabsBezelBorder)
+  if (type == NSTopTabsBezelBorder)
     {
       iP.x = bounds.origin.x;
       iP.y = bounds.origin.y;
       position = GTK_POS_TOP; // sic!
       labelYCorrection = 1.0;
     }   
-  else if (type == NSTopTabsBezelBorder)
+  else if (type == NSBottomTabsBezelBorder)
     {
       iP.x = bounds.origin.x;
       iP.y = bounds.size.height - 16;

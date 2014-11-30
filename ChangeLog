@@ -1,3 +1,8 @@
+2014-11-29  German Arias <germanandre@gmx.es>
+
+	* NSTabView+Gnome.m: Fix problem where top tabs are drawn as bottom
+	tabs and vice versa.
+
 2014-01-15  Niels Grewe <niels.grewe@halbordnung.de>
 
 	* GGnomeTheme.m: Load the DBusMenu bundle and use the remote menu
