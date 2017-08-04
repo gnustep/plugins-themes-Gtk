@@ -150,7 +150,6 @@ void init_gtk_widgets()
     add_widget(gtkTreeView);
 
     GtkWidget *gtkMenuBar = gtk_menu_bar_new();
-    setup_gtk_widget(gtkMenuBar);
 
     GtkWidget *gtkMenuBarItem = gtk_menu_item_new();
     gtk_menu_shell_append((GtkMenuShell*)(gtkMenuBar), gtkMenuBarItem);

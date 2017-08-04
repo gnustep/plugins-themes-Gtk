@@ -1,3 +1,8 @@
+2017-08-04  Fred Kiefer <FredKiefer@gmx.de>
+
+	* GGnomeThemeInitialization.m: Remove duplicate call to
+	setup_gtk_widget().
+
 2014-11-29  German Arias <germanandre@gmx.es>
 
 	* NSTabView+Gnome.m: Fix problem where top tabs are drawn as bottom
