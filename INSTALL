@@ -17,3 +17,11 @@ or type on the command line:
 defaults write NSGlobalDomain GSTheme GnomeTheme
 
 Thanks, GC
+
+Dependencies
+------------
+
+On Debian-derivatives:
+
+* libgtk2.0-dev
+* libgconf2-dev

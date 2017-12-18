@@ -1,3 +1,7 @@
+2017-12-18  Ivan Vucica <ivan@vucica.net>
+
+	* INSTALL: List some of the Debian dependencies for easier reference.
+
 2017-08-04  Fred Kiefer <FredKiefer@gmx.de>
 
 	* GGnomeThemeInitialization.m: Remove duplicate call to
