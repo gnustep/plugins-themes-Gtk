@@ -12,7 +12,7 @@ MYCFLAGS = $(shell pkg-config --cflags glib-2.0 gtk+-2.0 gconf-2.0)
 
 ADDITIONAL_OBJCFLAGS = -Wno-import -g $(MYCFLAGS) -O0 # -Wall -O2
 ADDITIONAL_CFLAGS = $(MYCFLAGS)
-make 
+
 Gtk_BUNDLE_LIBS = $(shell pkg-config --libs glib-2.0 gtk+-2.0 gconf-2.0)
 
 #
