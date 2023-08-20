@@ -12,7 +12,7 @@ MYCFLAGS = $(shell pkg-config --cflags glib-2.0 gtk+-2.0 gconf-2.0)
 
 ADDITIONAL_OBJCFLAGS = -Wno-import -g $(MYCFLAGS) -O0 # -Wall -O2
 ADDITIONAL_CFLAGS = $(MYCFLAGS)
-
+make 
 Gtk_BUNDLE_LIBS = $(shell pkg-config --libs glib-2.0 gtk+-2.0 gconf-2.0)
 
 #
@@ -24,31 +24,32 @@ BUNDLE_EXTENSION = .theme
 VERSION = 1
 
 Gtk_PRINCIPAL_CLASS = GGnomeTheme
-Gtk_INSTALL_DIR=$(GNUSTEP_LIBRARY)/Themes
-Gtk_RESOURCE_FILES=Resources/gnome_icon_48.png \
-Resources/ThemeImages/*
+Gtk_INSTALL_DIR = $(GNUSTEP_LIBRARY)/Themes
+Gtk_RESOURCE_FILES = \
+	Resources/gnome_icon_48.png \
+	Resources/ThemeImages/common_outlineUnexpandable.tiff
 
 #
 # Class files
 #
 Gtk_OBJC_FILES = \
-		GSBrowserTitleCell+Gnome.m \
-		NSPopUpButtonCell+Gnome.m \
-		NSMenuView+Gnome.m \
-		NSSliderCell+Gnome.m \
-		NSTableHeaderCell+Gnome.m \
-		NSTableHeaderView+Gnome.m \
-		NSTableView+Gnome.m \
-		NSScrollView+Gnome.m \
-		NSScroller+Gnome.m \
-		NSTabView+Gnome.m \
-		NSBrowser+Gnome.m \
-		NSWindow+Gnome.m \
-		GGScrollKnobCell.m \
-		GGScrollStepperCell.m \
-		GGPainter.m \
-		GGnomeThemeInitialization.m \
-		GGnomeTheme.m
+	GSBrowserTitleCell+Gnome.m \
+	NSPopUpButtonCell+Gnome.m \
+	NSMenuView+Gnome.m \
+	NSSliderCell+Gnome.m \
+	NSTableHeaderCell+Gnome.m \
+	NSTableHeaderView+Gnome.m \
+	NSTableView+Gnome.m \
+	NSScrollView+Gnome.m \
+	NSScroller+Gnome.m \
+	NSTabView+Gnome.m \
+	NSBrowser+Gnome.m \
+	NSWindow+Gnome.m \
+	GGScrollKnobCell.m \
+	GGScrollStepperCell.m \
+	GGPainter.m \
+	GGnomeThemeInitialization.m \
+	GGnomeTheme.m
 
 -include GNUmakefile.preamble
 
