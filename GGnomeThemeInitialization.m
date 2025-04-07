@@ -80,7 +80,7 @@ void init_gtk_window()
       
       x11ErrorHandler gs_x_errhandler = XSetErrorHandler(0);
       gtk_init (NULL, NULL);
-      gconf_init(NULL, NULL, NULL);
+      gconf_init(0, NULL, NULL);
       GdkScreen *screen;
       GdkColormap *cmap;
       screen = gdk_screen_get_default();
