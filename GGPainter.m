@@ -53,7 +53,7 @@ static inline void reorder_color_bytes(guchar *data, int width, int height, gboo
   }
 }
 
-static inline GdkPixmap *init_pixmap_and_cairo_for_rect(GtkWidget *m_window, NSRect rect, GtkStyle **style, cairo_t **cr, cairo_public cairo_surface_t **pixmap_surface)
+static inline GdkPixmap *init_pixmap_and_cairo_for_rect(GtkWidget *m_window, NSRect rect, GtkStyle **style, cairo_t **cr, cairo_surface_t **pixmap_surface)
 {
   GdkPixmap *pixmap = gdk_pixmap_new(GDK_DRAWABLE(m_window->window), rect.size.width, rect.size.height, -1);
   if (!pixmap)
@@ -69,7 +69,7 @@ static inline GdkPixmap *init_pixmap_and_cairo_for_rect(GtkWidget *m_window, NSR
   return pixmap;
 }
 
-static inline NSImage *create_ns_image_from_pixmap(BOOL m_alpha, NSRect rect, GdkPixmap *pixmap, cairo_t *cr, cairo_public cairo_surface_t *pixmap_surface)
+static inline NSImage *create_ns_image_from_pixmap(BOOL m_alpha, NSRect rect, GdkPixmap *pixmap, cairo_t *cr, cairo_surface_t **pixmap_surface)
 {
   cairo_surface_t *result_surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, rect.size.width, rect.size.height);
   cairo_t *cr_result = cairo_create (result_surface);
@@ -331,7 +331,7 @@ static inline NSImage *create_ns_image_from_pixmap(BOOL m_alpha, NSRect rect, Gd
 #define PAINT_FUNCTION_BODY(contents) \
     NSRect rect = size;                                                 \
     cairo_t *cr;                                                        \
-    cairo_public cairo_surface_t *pixmap_surface;                        \
+    cairo_surface_t **pixmap_surface;                                   \
     GdkPixmap *pixmap = init_pixmap_and_cairo_for_rect(m_window, rect, &style, &cr, &pixmap_surface); \
     \
     contents; \
