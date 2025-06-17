@@ -27,7 +27,7 @@ Gtk_PRINCIPAL_CLASS = GGnomeTheme
 Gtk_INSTALL_DIR = $(GNUSTEP_LIBRARY)/Themes
 Gtk_RESOURCE_FILES = \
 	Resources/gnome_icon_48.png \
-	Resources/ThemeImages/common_outlineUnexpandable.tiff
+	Resources/ThemeImages
 
 #
 # Class files
