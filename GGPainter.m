@@ -73,7 +73,7 @@ static inline NSImage *create_ns_image_from_pixmap(BOOL m_alpha, NSRect rect, Gd
 {
   cairo_surface_t *result_surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, rect.size.width, rect.size.height);
   cairo_t *cr_result = cairo_create (result_surface);
-  cairo_set_source_surface(cr_result, pixmap_surface, 0, 0);
+  cairo_set_source_surface(cr_result, *pixmap_surface, 0, 0);
   cairo_paint(cr_result);
   cairo_destroy(cr);
   cairo_destroy(cr_result);
@@ -332,7 +332,7 @@ static inline NSImage *create_ns_image_from_pixmap(BOOL m_alpha, NSRect rect, Gd
     NSRect rect = size;                                                 \
     cairo_t *cr;                                                        \
     cairo_surface_t **pixmap_surface;                                   \
-    GdkPixmap *pixmap = init_pixmap_and_cairo_for_rect(m_window, rect, &style, &cr, &pixmap_surface); \
+    GdkPixmap *pixmap = init_pixmap_and_cairo_for_rect(m_window, rect, &style, &cr, pixmap_surface); \
     \
     contents; \
      \
