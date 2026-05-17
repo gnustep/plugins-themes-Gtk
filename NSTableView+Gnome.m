@@ -139,7 +139,7 @@
 
   gint line_width;
   gint8 *dash_list;
-  float dash_list_float[2];
+  CGFloat dash_list_float[2];
   GdkGCValues lineGCValues;
   NSArray *tableColumns = [tableView tableColumns];
 
