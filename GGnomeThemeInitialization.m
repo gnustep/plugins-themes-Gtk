@@ -410,6 +410,10 @@ NSFont *fontFromNameAndSize(NSString *nameAndSize)
 {
   NSString *fontName = nil;
   NSString *fontSize = nil;
+
+  if ([nameAndSize length] == 0)
+    return nil;
+
   NSScanner *scanner = [NSScanner scannerWithString: nameAndSize];
   [scanner scanUpToCharactersFromSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]
 			  intoString: &fontName];
@@ -417,6 +421,10 @@ NSFont *fontFromNameAndSize(NSString *nameAndSize)
 		      intoString: NULL];
   [scanner scanUpToCharactersFromSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]
 			  intoString: &fontSize];
+
+  if ([fontSize length] == 0)
+    return nil;
+
   float fSize = [fontSize floatValue] + 3; // not sure why this is needed.  GS seems to be rendering fonts smaller than GNOME.
   NSFont *font = [NSFont fontWithName: fontName
 				 size: fSize];
