@@ -1,3 +1,12 @@
+2026-09-27  probonopd  <probonopd@users.noreply.github.com>
+
+	* GGnomeThemeInitialization.m (fontFromNameAndSize): Return nil when
+	given an empty/nil name-and-size string, or one with no size token,
+	instead of falling through to a fudged size computed from a nil
+	float value.  setup_fonts() then leaves NSUserFont/NSUserFontSize
+	alone instead of overwriting them with a bogus tiny size whenever
+	the GConf font key cannot be read (e.g. GConf itself unavailable).
+
 2017-12-18  Ivan Vucica <ivan@vucica.net>
 
 	* INSTALL: List some of the Debian dependencies for easier reference.
